@@ -332,6 +332,35 @@ public class BookTest {
     }
 
     /**
+     * Test method equals from class Entity if this object id points to the same long.
+     */
+    @Test
+    public void testBookEqualsLongValid() {
+        Book book = new Book(new Long(1), null, null, null, null);
+        assertTrue(book.equals(new Long(1)));
+    }
+
+    /**
+     * Test method equals from class Entity if this object id doesn't point to the same long.
+     */
+    @Test
+    public void testBookEqualsLongInvalid() {
+        Book book = new Book(new Long(1), null, null, null, null);
+        assertFalse(book.equals(new Long(2)));
+    }
+
+    /**
+     * Test method equals from class Entity if this object id points to another object id.
+     */
+    @Test
+    public void testBookEqualsObjectValid() {
+     Book book = new Book(new Long(1), null, null, null, null);
+     Long l = new Long(1);
+     Object o  = (Object)l;
+     assertTrue(book.equals(o));
+    }
+
+    /**
      * Test method equals from class Entity if this object id points to the same object.
      */
     @Test
@@ -339,6 +368,26 @@ public class BookTest {
         Book instance = new Book(new Long(1), null, null, Long.MIN_VALUE, Long.MIN_VALUE);
         Book o = instance;
         assertTrue(instance.equals(o));
+    }
+
+    /**
+     * Test method equals from class Entity if this object id points to another object with same id.
+     */
+    @Test
+    public void testEqualsLongValid() {
+        Book book25 = new Book(new Long(25), null, null, null, null);
+        Book book50 = new Book(new Long(25), null, null, null, null);
+        assertTrue(book25.equals(book50));
+    }
+
+    /**
+     * Test method equals from class Entity if this object id points to another object with another id.
+     */
+    @Test
+    public void testEqualsLongInvalid() {
+        Book book25 = new Book(new Long(25), null, null, null, null);
+        Book book50 = new Book(new Long(50), null, null, null, null);
+        assertFalse(book25.equals(book50));
     }
 
     /**
