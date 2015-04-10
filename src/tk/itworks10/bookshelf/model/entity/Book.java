@@ -326,22 +326,22 @@ public class Book extends Entity {
             }
             for (Map.Entry<Object, Object> entry : map.entrySet()) {
                 if (entry.getKey().equals("title")) {
-                    if (!this.title.equals(entry.getValue())) {
+                    if (this.title == null || !this.title.equals(entry.getValue())) {
                         return false;
                     }
                 }
                 else if (entry.getKey().equals("releaseDate")) {
-                    if (!this.releaseDate.equals(entry.getValue())) {
+                    if (this.releaseDate == null || !this.releaseDate.equals(entry.getValue())) {
                         return false;
                     }
                 }
                 else if (entry.getKey().equals("numero")) {
-                    if (!this.numero.equals(entry.getValue())) {
+                    if (this.numero == null || !this.numero.equals(entry.getValue())) {
                         return false;
                     }
                 }
                 else if (entry.getKey().equals("pageCount")) {
-                    if (!this.pageCount.equals(entry.getValue())) {
+                    if (this.pageCount == null || !this.pageCount.equals(entry.getValue())) {
                         return false;
                     }
                 }
