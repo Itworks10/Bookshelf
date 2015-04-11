@@ -317,7 +317,9 @@ public class Book extends Entity {
             return this.id.equals(obj);
         }
         if (obj instanceof Entity) {
-            return this.id.equals(((Entity)obj).id);
+            if (this.id != null) {
+                return this.id.equals(((Entity)obj).id);
+            }
         }
         if (obj instanceof Map) {
             Map<Object, Object> map = (Map<Object, Object>)obj;
