@@ -84,10 +84,10 @@ public abstract class FileDAO<K, E> implements DAO<K, E> {
      */
     @Override
     public void insert(E entity) throws DAODuplicateEntityException {
+        this.setUniqueId(entity);
         if(entities.contains(entity)) {
             throw new DAODuplicateEntityException();
         }
-        this.setUniqueId(entity);
         entities.add(entity);
     }
 
