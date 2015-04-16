@@ -57,6 +57,11 @@ public class KeywordFileDAO extends FileDAO<Long, Keyword>{
      */
     public KeywordFileDAO(Collection<Keyword> entities){
         super(entities);
+        for (Keyword keyword : entities) {
+            if (nextKey <= keyword.getId()) {
+               nextKey = keyword.getId() + 1;
+            }
+        }
     }
 
     /**

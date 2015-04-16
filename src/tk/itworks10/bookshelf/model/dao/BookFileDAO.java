@@ -57,6 +57,11 @@ public class BookFileDAO extends FileDAO<Long, Book>{
      */
     public BookFileDAO(Collection<Book> entities){
         super(entities);
+        for (Book book : entities) {
+            if (nextKey <= book.getId()) {
+               nextKey = book.getId() + 1;
+            }
+        }
     }
 
     /**

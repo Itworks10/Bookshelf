@@ -57,6 +57,11 @@ public class PersonFileDAO extends FileDAO<Long, Person>{
      */
     public PersonFileDAO(Collection<Person> entities){
         super(entities);
+        for (Person person : entities) {
+            if (nextKey <= person.getId()) {
+               nextKey = person.getId() + 1;
+            }
+        }
     }
 
     /**

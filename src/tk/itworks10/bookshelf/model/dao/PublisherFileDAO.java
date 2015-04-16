@@ -57,6 +57,11 @@ public class PublisherFileDAO extends FileDAO<Long, Publisher>{
      */
     public PublisherFileDAO(Collection<Publisher> entities){
         super(entities);
+        for (Publisher publisher : entities) {
+            if (nextKey <= publisher.getId()) {
+               nextKey = publisher.getId() + 1;
+            }
+        }
     }
 
     /**

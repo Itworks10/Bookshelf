@@ -57,6 +57,11 @@ public class GenreFileDAO extends FileDAO<Long, Genre>{
      */
     public GenreFileDAO(Collection<Genre> entities){
         super(entities);
+        for (Genre genre : entities) {
+            if (nextKey <= genre.getId()) {
+               nextKey = genre.getId() + 1;
+            }
+        }
     }
 
     /**

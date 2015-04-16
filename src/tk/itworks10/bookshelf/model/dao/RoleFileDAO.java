@@ -57,6 +57,11 @@ public class RoleFileDAO extends FileDAO<Long, Role>{
      */
     public RoleFileDAO(Collection<Role> entities){
         super(entities);
+        for (Role role : entities) {
+            if (nextKey <= role.getId()) {
+               nextKey = role.getId() + 1;
+            }
+        }
     }
 
     /**
