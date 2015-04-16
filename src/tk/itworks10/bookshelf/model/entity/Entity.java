@@ -88,7 +88,7 @@ public abstract class Entity implements Comparable<Entity>{
             return this.id.equals(obj);
         }
         if (obj instanceof Entity) {
-            return this.id.equals(((Entity)obj).id);
+            return this.id != null && this.id.equals(((Entity)obj).id);
         }
         return false;
     }
