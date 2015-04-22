@@ -25,6 +25,7 @@
  */
 package tk.itworks10.bookshelf.model.entity;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -72,6 +73,51 @@ public class Genre extends Entity {
         this.name = name;
     }
 
+    /**
+     * Overloaded method equals from class Entity.
+     * <p>
+     * Compare a genre to another object. Comparison is done by first checking if the two objects are the same,
+     * then by checking if the compared object is a Long, then an Entity, and lastly a Map whose key can be:
+     * </p>
+     * <ul>
+     * <li>name</li>
+     * </ul>
+     * @param obj The object to compare with.
+     * @return true if the objects are the same, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Long) {
+            return this.id.equals(obj);
+        }
+        if (obj instanceof Entity) {
+            if (this.id != null) {
+                return this.id.equals(((Entity)obj).id);
+            }
+        }
+        if (obj instanceof Map) {
+            Map<Object, Object> map = (Map<Object, Object>)obj;
+            if (map.isEmpty()) {
+                return false;
+            }
+            for (Map.Entry<Object, Object> entry : map.entrySet()) {
+                if (entry.getKey().equals("name")) {
+                    if (this.name == null || !this.name.equals(entry.getValue())) {
+                        return false;
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    
     /**
      *
      * @return id from Entity, name.

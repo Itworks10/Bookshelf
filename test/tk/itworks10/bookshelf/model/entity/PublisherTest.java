@@ -25,6 +25,8 @@
  */
 package tk.itworks10.bookshelf.model.entity;
 
+import java.util.HashMap;
+import java.util.Map;
 import tk.itworks10.bookshelf.model.entity.Publisher;
 import tk.itworks10.bookshelf.model.entity.Role;
 import org.junit.Test;
@@ -173,5 +175,57 @@ public class PublisherTest {
         Long o = new Long(0);
         Publisher instance = new Publisher(new Long(1), "");
         assertFalse(instance.equals(o));
+    }
+
+    /**
+     * Test the map from method equals.
+     */
+    @Test
+    public void testMapEmpty() {
+        Publisher publisher = new Publisher(new Long(1), "publisher");
+        Map<String, Object> params = new HashMap();
+        assertFalse(publisher.equals(params));
+    }
+
+    @Test
+    public void testMapWrongKey() {
+        Publisher publisher = new Publisher(new Long(1), "publisher");
+        Map<String, Object> params = new HashMap();
+        params.put("test1", "asez");
+        params.put("test2", null);
+        params.put("test3", "");
+        assertFalse(publisher.equals(params));
+    }
+
+    @Test
+    public void testMapEmptyThisNull() {
+        Publisher publisher = new Publisher(new Long(1), null);
+        Map<String, Object> params = new HashMap();
+        assertFalse(publisher.equals(params));
+
+    }
+
+    @Test
+    public void testMapNotEgalThis() {
+        Publisher publisher = new Publisher(new Long(1), "publisher");
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertFalse(publisher.equals(params));
+    }
+
+    @Test
+    public void testMapThisNull() {
+        Publisher publisher = new Publisher(new Long(1), null);
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertFalse(publisher.equals(params));
+    }
+
+    @Test
+    public void testMapEqualThis() {
+        Publisher publisher = new Publisher(new Long(1), "test1");
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertTrue(publisher.equals(params));
     }
 }

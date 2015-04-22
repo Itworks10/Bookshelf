@@ -25,6 +25,8 @@
  */
 package tk.itworks10.bookshelf.model.entity;
 
+import java.util.HashMap;
+import java.util.Map;
 import tk.itworks10.bookshelf.model.entity.Keyword;
 import tk.itworks10.bookshelf.model.entity.Role;
 import org.junit.Test;
@@ -173,5 +175,57 @@ public class KeywordTest {
         Long o = new Long(0);
         Keyword instance = new Keyword(new Long(1), "");
         assertFalse(instance.equals(o));
+    }
+
+    /**
+     * Test the map from method equals.
+     */
+    @Test
+    public void testMapEmpty() {
+        Keyword keyword = new Keyword(new Long(1), "keyword");
+        Map<String, Object> params = new HashMap();
+        assertFalse(keyword.equals(params));
+    }
+
+    @Test
+    public void testMapWrongKey() {
+        Keyword keyword = new Keyword(new Long(1), "keyword");
+        Map<String, Object> params = new HashMap();
+        params.put("test1", "asez");
+        params.put("test2", null);
+        params.put("test3", "");
+        assertFalse(keyword.equals(params));
+    }
+
+    @Test
+    public void testMapEmptyThisNull() {
+        Keyword keyword = new Keyword(new Long(1), null);
+        Map<String, Object> params = new HashMap();
+        assertFalse(keyword.equals(params));
+
+    }
+
+    @Test
+    public void testMapNotEgalThis() {
+        Keyword keyword = new Keyword(new Long(1), "keyword");
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertFalse(keyword.equals(params));
+    }
+
+    @Test
+    public void testMapThisNull() {
+        Keyword keyword = new Keyword(new Long(1), null);
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertFalse(keyword.equals(params));
+    }
+
+    @Test
+    public void testMapEqualThis() {
+        Keyword keyword = new Keyword(new Long(1), "test1");
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertTrue(keyword.equals(params));
     }
 }

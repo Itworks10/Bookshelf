@@ -25,6 +25,8 @@
  */
 package tk.itworks10.bookshelf.model.entity;
 
+import java.util.HashMap;
+import java.util.Map;
 import tk.itworks10.bookshelf.model.entity.Role;
 import tk.itworks10.bookshelf.model.entity.Keyword;
 import org.junit.Test;
@@ -172,5 +174,57 @@ public class RoleTest {
         Long o = new Long(0);
         Role instance = new Role(new Long(1), "");
         assertFalse(instance.equals(o));
+    }
+
+    /**
+     * Test the map from method equals.
+     */
+    @Test
+    public void testMapEmpty() {
+        Role role = new Role(new Long(1), "role");
+        Map<String, Object> params = new HashMap();
+        assertFalse(role.equals(params));
+    }
+    
+    @Test
+    public void testMapWrongKey() {
+        Role role = new Role(new Long(1), "role");
+        Map<String, Object> params = new HashMap();
+        params.put("test1", "asez");
+        params.put("test2", null);
+        params.put("test3", "");
+        assertFalse(role.equals(params));
+    }
+
+    @Test
+    public void testMapEmptyThisNull() {
+        Role role = new Role(new Long(1), null);
+        Map<String, Object> params = new HashMap();
+        assertFalse(role.equals(params));
+
+    }
+
+    @Test
+    public void testMapNotEgalThis() {
+        Role role = new Role(new Long(1), "role");
+        Map<String, Object> params = new HashMap();
+        params.put("title", "test1");
+        assertFalse(role.equals(params));
+    }
+
+    @Test
+    public void testMapThisNull() {
+        Role role = new Role(new Long(1), null);
+        Map<String, Object> params = new HashMap();
+        params.put("title", "test1");
+        assertFalse(role.equals(params));
+    }
+
+    @Test
+    public void testMapEqualThis() {
+        Role role = new Role(new Long(1), "test1");
+        Map<String, Object> params = new HashMap();
+        params.put("title", "test1");
+        assertTrue(role.equals(params));
     }
 }

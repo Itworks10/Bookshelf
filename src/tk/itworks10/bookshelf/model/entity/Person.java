@@ -25,6 +25,7 @@
  */
 package tk.itworks10.bookshelf.model.entity;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -144,6 +145,63 @@ public class Person extends Entity {
      */
     public final void setRole(Role role) {
         this.role = role;
+    }
+
+    /**
+     * Overloaded method equals from class Entity.
+     * <p>
+     * Compare a person to another object. Comparison is done by first checking if the two objects are the same,
+     * then by checking if the compared object is a Long, then an Entity, and lastly a Map whose key can be:
+     * </p>
+     * <ul>
+     * <li>firstName</li>
+     * <li>lastName</li>
+     * <li>role</li>
+     * </ul>
+     * @param obj The object to compare with.
+     * @return true if the objects are the same, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Long) {
+            return this.id.equals(obj);
+        }
+        if (obj instanceof Entity) {
+            if (this.id != null) {
+                return this.id.equals(((Entity)obj).id);
+            }
+        }
+        if (obj instanceof Map) {
+            Map<Object, Object> map = (Map<Object, Object>)obj;
+            if (map.isEmpty()) {
+                return false;
+            }
+            for (Map.Entry<Object, Object> entry : map.entrySet()) {
+                if (entry.getKey().equals("firstName")) {
+                    if (this.firstName == null || !this.firstName.equals(entry.getValue())) {
+                        return false;
+                    }
+                }
+                else if (entry.getKey().equals("lastName")) {
+                    if (this.lastName == null || !this.lastName.equals(entry.getValue())) {
+                        return false;
+                    }
+                }
+                else if (entry.getKey().equals("role")) {
+                    if (this.role == null || !this.role.equals(entry.getValue())) {
+                        return false;
+                    }
+                }
+                else {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     /**

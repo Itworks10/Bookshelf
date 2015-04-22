@@ -25,6 +25,8 @@
  */
 package tk.itworks10.bookshelf.model.entity;
 
+import java.util.HashMap;
+import java.util.Map;
 import tk.itworks10.bookshelf.model.entity.Genre;
 import tk.itworks10.bookshelf.model.entity.Role;
 import org.junit.Test;
@@ -173,5 +175,57 @@ public class GenreTest {
         Long o = new Long(0);
         Genre instance = new Genre(new Long(1), "");
         assertFalse(instance.equals(o));
+    }
+
+    /**
+     * Test the map from method equals.
+     */
+    @Test
+    public void testMapEmpty() {
+        Genre genre = new Genre(new Long(1), "genre");
+        Map<String, Object> params = new HashMap();
+        assertFalse(genre.equals(params));
+    }
+
+    @Test
+    public void testMapWrongKey() {
+        Genre genre = new Genre(new Long(1), "genre");
+        Map<String, Object> params = new HashMap();
+        params.put("test1", "asez");
+        params.put("test2", null);
+        params.put("test3", "");
+        assertFalse(genre.equals(params));
+    }
+
+    @Test
+    public void testMapEmptyThisNull() {
+        Genre genre = new Genre(new Long(1), null);
+        Map<String, Object> params = new HashMap();
+        assertFalse(genre.equals(params));
+
+    }
+
+    @Test
+    public void testMapNotEgalThis() {
+        Genre genre = new Genre(new Long(1), "genre");
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertFalse(genre.equals(params));
+    }
+
+    @Test
+    public void testMapThisNull() {
+        Genre genre = new Genre(new Long(1), null);
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertFalse(genre.equals(params));
+    }
+
+    @Test
+    public void testMapEqualThis() {
+        Genre genre = new Genre(new Long(1), "test1");
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertTrue(genre.equals(params));
     }
 }

@@ -25,6 +25,8 @@
  */
 package tk.itworks10.bookshelf.model.entity;
 
+import java.util.HashMap;
+import java.util.Map;
 import tk.itworks10.bookshelf.model.entity.Person;
 import tk.itworks10.bookshelf.model.entity.Role;
 import org.junit.Test;
@@ -197,5 +199,76 @@ public class PersonTest {
         Long o = new Long(0);
         Person instance = new Person(new Long(1), "", "", new Role());
         assertFalse(instance.equals(o));
+    }
+
+    /**
+     * Test the map from method equals.
+     */
+    @Test
+    public void testMapEmpty() {
+        Role role = new Role(new Long(1), "");
+        Person person = new Person(new Long(1), "firstName1", "lastName1", role);
+        Map<String, Object> params = new HashMap();
+        assertFalse(person.equals(params));
+    }
+
+    @Test
+    public void testMapWrongKey() {
+        Role role = new Role(new Long(1), "");
+        Person person = new Person(new Long(1), "firstName1", "lastName1", role);
+        Map<String, Object> params = new HashMap();
+        params.put("test1", "asez");
+        params.put("test2", null);
+        params.put("test3", "");
+        assertFalse(person.equals(params));
+    }
+
+    @Test
+    public void testMapWrongPlusGoodKey() {
+        Role role = new Role(new Long(1), "");
+        Person person = new Person(new Long(1), "firstName1", "lastName1", role);
+        Map<String, Object> params = new HashMap();
+        params.put("firstName", "firstName1");
+        params.put("test2", null);
+        params.put("test3", "");
+        assertFalse(person.equals(params));
+    }
+
+    @Test
+    public void testMapEmptyThisNull() {
+        Role role = new Role(new Long(1), "");
+        Person person = new Person(new Long(1), null, null, null);
+        Map<String, Object> params = new HashMap();
+        assertFalse(person.equals(params));
+
+    }
+
+    @Test
+    public void testMapNotEgalThis() {
+        Role role = new Role(new Long(1), "");
+        Person person = new Person(new Long(1), "firstName1", null, null);
+        Map<String, Object> params = new HashMap();
+        params.put("firtName", "test1");
+        assertFalse(person.equals(params));
+    }
+
+    @Test
+    public void testMapThisNull() {
+        Role role = new Role(new Long(1), "");
+        Person person = new Person(new Long(1), null, null, null);
+        Map<String, Object> params = new HashMap();
+        params.put("name", "test1");
+        assertFalse(person.equals(params));
+    }
+
+    @Test
+    public void testMapEqualThis() {
+        Role role = new Role(new Long(1), "");
+        Person person = new Person(new Long(1), "firstName1", "lastName1", role);
+        Map<String, Object> params = new HashMap();
+        params.put("firstName", "firstName1");
+        params.put("lastName", "lastName1");
+        params.put("role", role);
+        assertTrue(person.equals(params));
     }
 }
