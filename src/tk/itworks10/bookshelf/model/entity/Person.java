@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Class Role extends from abstract class Entity.
+ * Class Person extends abstract class Entity.
  * <p>
  * Class Person is linked to class Role. A person possess one role.
  * @author Itworks10 <Alexandre.V.Leger@gmail.com>
@@ -81,7 +81,7 @@ public class Person extends Entity {
     /**
      * Compare this object role to a role. Unused as of right now.
      * @param role Role
-     * @return true if matches, false otherwise.
+     * @return true if the objects are the same, false otherwise.
      */
     public boolean isRelatedTo(Role role) {
         return this.role.equals(role);
@@ -90,7 +90,7 @@ public class Person extends Entity {
     /**
      * Compare this object role to the id of a role. Unused as of right now.
      * @param role Role
-     * @return true if matches, false otherwise.
+     * @return true if the objects are the same, false otherwise.
      */
     public boolean isRelatedTo(Long role) {
         return this.role.equals(role);
@@ -99,7 +99,7 @@ public class Person extends Entity {
     /**
      * Compare this object role to an object. Unused as of right now.
      * @param o Object
-     * @return true if matches, false otherwise.
+     * @return true if the objects are the same, false otherwise.
      */
     public boolean isRelatedTo(Object o) {
         return role.equals(o);

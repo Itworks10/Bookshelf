@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Class Genre extends from abstract class Entity.
+ * Class Genre extends abstract class Entity.
  * @author Itworks10 <Alexandre.V.Leger@gmail.com>
  */
 public class Genre extends Entity {

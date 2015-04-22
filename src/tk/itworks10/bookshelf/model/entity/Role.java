@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Class Role extends from abstract class Entity.
+ * Class Role extends abstract class Entity.
  * <p>
  * Class Role is linked to class Person. A person possess one role.
  * @author Itworks10 <Alexandre.V.Leger@gmail.com>

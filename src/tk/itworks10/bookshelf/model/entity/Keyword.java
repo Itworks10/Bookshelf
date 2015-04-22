@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- *  Class Keyword extends from abstract class Entity.
+ *  Class Keyword extends abstract class Entity.
  * @author Itworks10 <Alexandre.V.Leger@gmail.com>
  */
 public class Keyword extends Entity {

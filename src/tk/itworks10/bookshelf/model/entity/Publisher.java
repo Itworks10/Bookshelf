@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Class Publisher extends from abstract class Entity.
+ * Class Publisher extends abstract class Entity.
  * @author Itworks10 <Alexandre.V.Leger@gmail.com>
  */
 public class Publisher extends Entity {
