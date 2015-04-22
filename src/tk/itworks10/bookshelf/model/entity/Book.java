@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Class Book extends from abstract class Entity.
+ * Class Book extends abstract class Entity.
  * <p>
  * Class Book is related to every other classes that expends from class Entity except class Role.
  * @author Itworks10 <Alexandre.V.Leger@gmail.com>
@@ -136,8 +136,8 @@ public class Book extends Entity {
     }
 
     /**
-     * Remove a Person object to the ArrayList persons from the Book object.
-     * @param person Person
+     * Remove a Person from the ArrayList persons.
+     * @param person The person to remove.
      */
     public void removeRelatedPerson(Person person) {
         persons.remove(person);
@@ -157,8 +157,8 @@ public class Book extends Entity {
     }
 
     /**
-     * Remove a Keyword object to the ArrayList keywords from the Book object.
-     * @param keyword
+     * Remove a Keyword from the ArrayList keywords.
+     * @param keyword The keyword to remove.
      */
     public void removeRelatedKeyword(Keyword keyword) {
         keywords.remove(keyword);
@@ -178,8 +178,8 @@ public class Book extends Entity {
     }
 
     /**
-     * Remove a Genre object to the ArrayList genres from the Book object.
-     * @param genre
+     * Remove a Genre from the ArrayList genres.
+     * @param genre The genre to remove.
      */
     public void removeRelatedGenre(Genre genre) {
         genres.remove(genre);
@@ -199,8 +199,8 @@ public class Book extends Entity {
     }
 
     /**
-     * Remove a Publisher object to the ArrayList publishers from the Book object.
-     * @param publisher
+     * Remove a Publisher from the ArrayList publishers.
+     * @param publisher The publisher to remove.
      */
     public void removeRelatedPublisher(Publisher publisher) {
         publishers.remove(publisher);
@@ -357,12 +357,21 @@ public class Book extends Entity {
     /**
      * Overloaded method equals from class Entity.
      * <p>
-     * Compare this object to the specified object. If the result is false, compare this object to a Long.
-     * If the result is false, compare this object id to an Entity id. If the result is false, compare 
-     * this object to a map whose key can be: title, releaseDate, numero, pageCount, collection persons, 
-     * collection, keywords, collection genres, collection publishers.
-     * @param obj Object
-     * @return true if matches, false otherwise.
+     * Compare a book to another object. Comparison is done by first checking if the two objects are the same, 
+     * then by checking if the compared object is a Long, then an Entity, and lastly a Map whose key can be: 
+     * </p>
+     * <ul>
+     * <li>title</li>
+     * <li>releaseDate</li>
+     * <li>numero</li>
+     * <li>pageCount</li>
+     * <li>persons</li>
+     * <li>keywords</li>
+     * <li>genres</li>
+     * <li>publishers</li>
+     * </ul>
+     * @param obj The object to compare with.
+     * @return true if the objects are the same, false otherwise.
      */
     @Override
     public boolean equals(Object obj) {
