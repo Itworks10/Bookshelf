@@ -187,6 +187,42 @@ public class Book extends Entity {
     }
 
     /**
+     * Check if ArrayList persons contains a person.
+     * @param person The person you want to know is inside the ArrayList or not.
+     * @return True if persons contains person, false otherwise.
+     */
+    public Boolean isRelatedTo(Person person) {
+        return persons.contains(person);
+    }
+
+    /**
+     * Check if ArrayList publishers contains a publisher.
+     * @param publisher The publisher you want to know is inside the ArrayList or not.
+     * @return True if publishers contains publisher, false otherwise.
+     */
+    public Boolean isRelatedTo(Publisher publisher) {
+        return publishers.contains(publisher);
+    }
+
+    /**
+     * Check if ArrayList genres contains a genre.
+     * @param genre The genre you want to know is inside the ArrayList or not.
+     * @return True if genres contains genre, false otherwise.
+     */
+    public Boolean isRelatedTo(Genre genre) {
+        return genres.contains(genre);
+    }
+
+    /**
+     * Check if ArrayList keywordss contains a keyword.
+     * @param keyword The keyword you want to know is inside the ArrayList or not.
+     * @return True if keywords contains keyword, false otherwise.
+     */
+    public Boolean isRelatedTo(Keyword keyword) {
+        return keywords.contains(keyword);
+    }
+
+    /**
      * @return the title
      */
     public String getTitle() {
