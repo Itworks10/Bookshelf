@@ -123,11 +123,16 @@ public class Book extends Entity {
     }
 
     /**
-     * Add a Person object to the ArrayList persons from the Book object.
-     * @param person Person
+     * Add a Person to the ArrayList persons.
+     * @param person The person to add.
+     * @return false if person is already added to ArrayList persons, true otherwise.
      */
-    public void addRelatedPerson(Person person) {
+    public Boolean addRelatedPerson(Person person) {
+        if (isRelatedTo(person)) {
+            return false;
+        }
         persons.add(person);
+        return true;
     }
 
     /**
@@ -139,11 +144,16 @@ public class Book extends Entity {
     }
 
     /**
-     * Add a Keyword object to the ArrayList keywords from the Book object.
-     * @param keyword
+     * Add a Keyword to the ArrayList keywords.
+     * @param keyword The keyword to add.
+     * @return false if keyword is already added to ArrayList keywords, true otherwise.
      */
-    public void addRelatedKeyword(Keyword keyword) {
+    public Boolean addRelatedKeyword(Keyword keyword) {
+        if (isRelatedTo(keyword)) {
+            return false;
+        }
         keywords.add(keyword);
+        return true;
     }
 
     /**
@@ -155,11 +165,16 @@ public class Book extends Entity {
     }
 
     /**
-     * Add a Genre object to the ArrayList genres from the Book object.
-     * @param genre
+     * Add a Genre to the ArrayList genres.
+     * @param genre The genre to add.
+     * @return false if genre is already added to ArrayList genres, true otherwise.
      */
-    public void addRelatedGenre(Genre genre) {
+    public Boolean addRelatedGenre(Genre genre) {
+        if (isRelatedTo(genre)) {
+            return false;
+        }
         genres.add(genre);
+        return true;
     }
 
     /**
@@ -171,11 +186,16 @@ public class Book extends Entity {
     }
 
     /**
-     * Add a Publisher object to the ArrayList publishers from the Book object.
-     * @param publisher
+     * Add a Publisher to the ArrayList publishers.
+     * @param publisher The publisher to add.
+     * @return false if publisher is already added to ArrayList publishers, true otherwise.
      */
-    public void addRelatedPublisher(Publisher publisher) {
+    public Boolean addRelatedPublisher(Publisher publisher) {
+        if (isRelatedTo(publisher)) {
+            return false;
+        }
         publishers.add(publisher);
+        return true;
     }
 
     /**
